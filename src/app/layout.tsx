@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans, Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Provider } from "react-redux";
+import Providers from "./providers";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -26,7 +28,14 @@ export default function RootLayout({
       lang="en" className={cn("font-sans", geist.variable)}
      // className={`${geistSans.variable} font-sans bg-gray-50 text-gray-900`}
     >
-      <body className={`${dmSans.className}`}>{children}</body>
+
+      <body className={`${dmSans.className}`}>
+        <Providers>
+        {children}
+       </Providers>
+ </body>
+       
+       
     </html>
   );
 }
