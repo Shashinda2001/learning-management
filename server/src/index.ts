@@ -7,6 +7,10 @@ import morgan from 'morgan';
 import pkg from "dynamoose";
 const { aws, Table, model } = pkg;
 
+//import routes from './routes'; --- IGNORE ---
+import courseRoutes from './routes/courseRoutes.ts';
+
+
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -27,6 +31,8 @@ app.use(cors());
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
+
+app.use('/api/courses', courseRoutes);
 
 const PORT = process.env.PORT || 3000;
 
