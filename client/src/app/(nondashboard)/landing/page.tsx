@@ -10,7 +10,7 @@ import router from 'next/dist/shared/lib/router/router';
 import { useRouter } from 'next/dist/client/components/navigation';
 import CourseCardSearch from '@/components/CourseCardSearch';
 
-const loadingSkeleton = () => {
+const LoadingSkeleton = () => {
     return(
 <div className='landing-skeleton'>
     <div className='landing-skeleton_hero'>
@@ -56,6 +56,11 @@ export const Landing = () => {
         router.push(`/search?id=${courseId}`);
     };
     console.log(courses);
+    if(isLoading){
+        return <LoadingSkeleton/>;
+    }
+
+
   return (
     <motion.div
     initial={{ opacity: 0, }}
